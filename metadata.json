@@ -1,0 +1,6 @@
+{
+  "name": "Nur - Islamic Suite",
+  "description": "Comprehensive client-side Islamic toolkit featuring Quran, Hadith, Prayer Times, Tasbeeh counter, Qibla Finder, Tafseer, Zakat & Inheritance calculators, Adhkar, and 99 Names of Allah.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
