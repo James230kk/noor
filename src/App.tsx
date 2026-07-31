@@ -13,6 +13,7 @@ import { ZakatView } from './components/ZakatView';
 import { InheritanceView } from './components/InheritanceView';
 import { Names99View } from './components/Names99View';
 import { HijriCalendarView } from './components/HijriCalendarView';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -96,8 +97,14 @@ export default function App() {
     });
   };
 
+  const cycleTheme = () => {
+    const themes: UserSettings['theme'][] = ['emerald', 'dark', 'sepia'];
+    const nextIndex = (themes.indexOf(settings.theme) + 1) % themes.length;
+    updateSettings({ theme: themes[nextIndex] });
+  };
+
   return (
-    <div className={`min-h-screen transition-colors duration-300 font-sans ${
+    <div className={`min-h-screen transition-colors duration-300 font-sans pb-20 md:pb-0 ${
       settings.theme === 'dark'
         ? 'bg-[#1C221B] text-[#F9F7F2]'
         : settings.theme === 'sepia'
@@ -179,6 +186,15 @@ export default function App() {
 
       {/* Footer */}
       <Footer setActiveTab={setActiveTab} language={language} />
+
+      {/* Mobile Bottom Navigation Bar */}
+      <MobileBottomNav
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        language={language}
+        setLanguage={setLanguage}
+        cycleTheme={cycleTheme}
+      />
     </div>
   );
 }
