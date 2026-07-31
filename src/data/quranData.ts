@@ -161,11 +161,16 @@ export const SAMPLE_SURAHS: Record<number, Ayah[]> = {
 };
 
 // Fetch Surah dynamic function with Al-Quran Cloud API + reciter choice + fallback
-export async function fetchSurahAyahs(surahNumber: number, reciterId: string = 'ar.alafasy'): Promise<Ayah[]> {
+export async function fetchSurahAyahs(
+  surahNumber: number, 
+  reciterId: string = 'ar.alafasy',
+  lang: string = 'en'
+): Promise<Ayah[]> {
   try {
+    const transEdition = lang === 'id' ? 'id.indonesian' : 'en.sahih';
     const [arabicRes, transRes] = await Promise.all([
       fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/${reciterId}`),
-      fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/en.sahih`)
+      fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/${transEdition}`)
     ]);
 
     if (!arabicRes.ok || !transRes.ok) {

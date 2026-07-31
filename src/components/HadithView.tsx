@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { HADITH_COLLECTION } from '../data/hadithData';
-import { Hadith } from '../types';
+import { Hadith, AppLanguage } from '../types';
 import { incrementHadithReadCount, getStoredProgress } from '../utils/progressStorage';
 import { Search, BookMarked, Copy, Check, Sparkles, Filter, CheckCircle2 } from 'lucide-react';
 
 interface HadithViewProps {
-  language: 'en' | 'ar';
+  language: AppLanguage;
 }
 
 export const HadithView: React.FC<HadithViewProps> = ({ language }) => {

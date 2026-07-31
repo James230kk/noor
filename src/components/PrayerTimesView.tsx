@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LocationState, UserSettings, PrayerTime } from '../types';
+import { LocationState, UserSettings, PrayerTime, AppLanguage } from '../types';
 import { calculatePrayerTimes, getDistanceToKaaba } from '../utils/prayerTimes';
 import { Clock, MapPin, Compass, Volume2, RefreshCw, ChevronRight, Settings2, Calendar } from 'lucide-react';
 
@@ -8,7 +8,7 @@ interface PrayerTimesViewProps {
   setLocation: (loc: LocationState) => void;
   settings: UserSettings;
   updateSettings: (s: Partial<UserSettings>) => void;
-  language: 'en' | 'ar';
+  language: AppLanguage;
 }
 
 const WORLD_CITIES = [

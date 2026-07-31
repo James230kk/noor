@@ -1,3 +1,5 @@
+export type AppLanguage = 'en' | 'ar' | 'id';
+
 export type ToolTab = 
   | 'prayer' 
   | 'quran' 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { ToolTab } from '../types';
+import { ToolTab, AppLanguage } from '../types';
 import { Shield } from 'lucide-react';
 
 interface FooterProps {
   setActiveTab: (tab: ToolTab) => void;
-  language: 'en' | 'ar';
+  language: AppLanguage;
 }
 
 export const Footer: React.FC<FooterProps> = ({ setActiveTab, language }) => {
@@ -16,24 +16,24 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, language }) => {
           <div className="space-y-3">
             <div className="flex items-baseline gap-2">
               <h3 className="text-3xl font-serif text-[#F9F7F2]">
-                Noor<span className="text-[#C5A059]">.</span>
+                Noorm<span className="text-[#C5A059]">.</span>
               </h3>
-              <span className="font-arabic text-xl text-[#C5A059]">نُورْ</span>
+              <span className="font-arabic text-xl text-[#C5A059]">نُورْمْ</span>
             </div>
             <p className="text-xs text-[#A8B5A3] leading-relaxed">
-              Built as <strong>Sadaqah Jariyah (صدقة جارية)</strong> for Muslims worldwide. 100% free, 100% client-side, ad-free, with complete user privacy. May Allah accept it from us and you.
+              Built as <strong>Sadaqah Jariyah (صدقة جارية)</strong> for Muslims worldwide. 100% free, 100% client-side, ad-free, with complete user privacy. Supported in Arabic, Indonesian & English. May Allah accept it from us and you.
             </p>
           </div>
 
           {/* Quick Tools Links */}
           <div className="space-y-3">
-            <h4 className="text-[10px] font-semibold text-[#C5A059] uppercase tracking-[0.25em]">Quick Islamic Suite</h4>
+            <h4 className="text-[10px] font-semibold text-[#C5A059] uppercase tracking-[0.25em]">Quick Noorm Islamic Suite</h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-[#A8B5A3]">
               <button onClick={() => setActiveTab('prayer')} className="text-left hover:text-[#C5A059] transition-colors">Prayer Times</button>
               <button onClick={() => setActiveTab('quran')} className="text-left hover:text-[#C5A059] transition-colors">Quran & Tafseer</button>
               <button onClick={() => setActiveTab('hadith')} className="text-left hover:text-[#C5A059] transition-colors">Hadith Library</button>
               <button onClick={() => setActiveTab('tasbeeh')} className="text-left hover:text-[#C5A059] transition-colors">Tasbeeh Counter</button>
-              <button onClick={() => setActiveTab('qibla')} className="text-left hover:text-[#C5A059] transition-colors">Qibla Finder</button>
+              <button onClick={() => setActiveTab('qibla')} className="text-left hover:text-[#C5A059] transition-colors">Real GPS Qibla Finder</button>
               <button onClick={() => setActiveTab('zakat')} className="text-left hover:text-[#C5A059] transition-colors">Zakat Calculator</button>
               <button onClick={() => setActiveTab('inheritance')} className="text-left hover:text-[#C5A059] transition-colors">Inheritance Shares</button>
               <button onClick={() => setActiveTab('names')} className="text-left hover:text-[#C5A059] transition-colors">99 Names of Allah</button>
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, language }) => {
         </div>
 
         <div className="border-t border-[#3A4D39] pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8C8474] gap-4">
-          <span>© {new Date().getFullYear()} Noor Islamic Suite • Sadaqah Jariyah</span>
+          <span>© {new Date().getFullYear()} Noorm Islamic Suite • Sadaqah Jariyah</span>
           <span className="flex items-center gap-2 text-[#C5A059]">
             <Shield className="w-4 h-4" /> No Cookies or Tracking • Complete Privacy
           </span>
@@ -61,4 +61,5 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, language }) => {
     </footer>
   );
 };
+
 

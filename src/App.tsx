@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ToolTab, LocationState, UserSettings, BookmarkAyah } from './types';
+import { ToolTab, LocationState, UserSettings, BookmarkAyah, AppLanguage } from './types';
 import { Header } from './components/Header';
 import { PrayerTimesView } from './components/PrayerTimesView';
 import { SearchView } from './components/SearchView';
@@ -17,7 +17,7 @@ import { Footer } from './components/Footer';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ToolTab>('prayer');
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+  const [language, setLanguage] = useState<AppLanguage>('en');
 
   const [location, setLocation] = useState<LocationState>({
     city: 'Makkah',
@@ -157,7 +157,7 @@ export default function App() {
         )}
 
         {activeTab === 'qibla' && (
-          <QiblaView location={location} setLocation={setLocation} />
+          <QiblaView location={location} setLocation={setLocation} language={language} />
         )}
 
         {activeTab === 'zakat' && (

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ADHKAR_COLLECTION } from '../data/adhkarData';
-import { DhikrItem } from '../types';
+import { DhikrItem, AppLanguage } from '../types';
 import { HeartHandshake, CheckCircle2, Sun, Moon, Bed, ShieldCheck, Sparkles, Check } from 'lucide-react';
 
 interface AdhkarViewProps {
-  language: 'en' | 'ar';
+  language: AppLanguage;
 }
 
 export const AdhkarView: React.FC<AdhkarViewProps> = ({ language }) => {
@@ -22,10 +22,10 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({ language }) => {
   };
 
   const categories = [
-    { id: 'morning', labelEn: 'Morning Adhkar', labelAr: 'أذكار الصباح', icon: <Sun className="w-4 h-4 text-amber-400" /> },
-    { id: 'evening', labelEn: 'Evening Adhkar', labelAr: 'أذكار المساء', icon: <Moon className="w-4 h-4 text-emerald-400" /> },
-    { id: 'after_prayer', labelEn: 'Post-Salah Adhkar', labelAr: 'أذكار بعد الصلاة', icon: <ShieldCheck className="w-4 h-4 text-amber-500" /> },
-    { id: 'sleep', labelEn: 'Sleep Adhkar', labelAr: 'أذكار النوم', icon: <Bed className="w-4 h-4 text-emerald-300" /> },
+    { id: 'morning', labelEn: 'Morning Adhkar', labelAr: 'أذكار الصباح', labelId: 'Dzikir Pagi', icon: <Sun className="w-4 h-4 text-amber-400" /> },
+    { id: 'evening', labelEn: 'Evening Adhkar', labelAr: 'أذكار المساء', labelId: 'Dzikir Petang', icon: <Moon className="w-4 h-4 text-emerald-400" /> },
+    { id: 'after_prayer', labelEn: 'Post-Salah Adhkar', labelAr: 'أذكار بعد الصلاة', labelId: 'Dzikir Setelah Sholat', icon: <ShieldCheck className="w-4 h-4 text-amber-500" /> },
+    { id: 'sleep', labelEn: 'Sleep Adhkar', labelAr: 'أذكار النوم', labelId: 'Dzikir Sebelum Tidur', icon: <Bed className="w-4 h-4 text-emerald-300" /> },
   ];
 
   return (
@@ -55,7 +55,7 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({ language }) => {
             }`}
           >
             {cat.icon}
-            <span>{language === 'ar' ? cat.labelAr : cat.labelEn}</span>
+            <span>{language === 'ar' ? cat.labelAr : language === 'id' ? cat.labelId : cat.labelEn}</span>
           </button>
         ))}
       </div>

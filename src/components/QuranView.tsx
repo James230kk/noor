@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SURAH_LIST, RECITERS, fetchSurahAyahs } from '../data/quranData';
-import { Ayah, BookmarkAyah, SurahMeta, UserSettings } from '../types';
+import { Ayah, BookmarkAyah, SurahMeta, UserSettings, AppLanguage } from '../types';
 import { TafseerModal } from './TafseerModal';
 import { toggleSurahReadState, toggleAyahReadState, getStoredProgress } from '../utils/progressStorage';
 import { 
@@ -28,7 +28,7 @@ interface QuranViewProps {
   updateSettings: (s: Partial<UserSettings>) => void;
   bookmarks: BookmarkAyah[];
   toggleBookmark: (bm: BookmarkAyah) => void;
-  language: 'en' | 'ar';
+  language: AppLanguage;
 }
 
 export const QuranView: React.FC<QuranViewProps> = ({
@@ -73,14 +73,14 @@ export const QuranView: React.FC<QuranViewProps> = ({
     if (!selectedSurah) return;
     async function loadData() {
       setLoading(true);
-      const data = await fetchSurahAyahs(selectedSurah!.number, settings.reciter);
+      const data = await fetchSurahAyahs(selectedSurah!.number, settings.reciter, language);
       setAyahs(data);
       setLoading(false);
       setActiveAyahIndex(null);
       setIsPlaying(false);
     }
     loadData();
-  }, [selectedSurah, settings.reciter]);
+  }, [selectedSurah, settings.reciter, language]);
 
   // Handle playing specific Ayah audio
   const playAyahAudio = (index: number) => {

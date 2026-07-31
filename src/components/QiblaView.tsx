@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { LocationState } from '../types';
+import { LocationState, AppLanguage } from '../types';
 import { calculatePrayerTimes, getDistanceToKaaba } from '../utils/prayerTimes';
 import { 
   Compass, 
@@ -18,9 +18,10 @@ import {
 interface QiblaViewProps {
   location: LocationState;
   setLocation: (loc: LocationState) => void;
+  language?: AppLanguage;
 }
 
-export const QiblaView: React.FC<QiblaViewProps> = ({ location, setLocation }) => {
+export const QiblaView: React.FC<QiblaViewProps> = ({ location, setLocation, language = 'en' }) => {
   const [deviceHeading, setDeviceHeading] = useState<number | null>(null);
   const [hasCompassSensor, setHasCompassSensor] = useState<boolean>(false);
   const [permissionRequested, setPermissionRequested] = useState<boolean>(false);

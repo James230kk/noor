@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { SURAH_LIST, SAMPLE_SURAHS } from '../data/quranData';
 import { HADITH_COLLECTION } from '../data/hadithData';
-import { Ayah, Hadith, SurahMeta } from '../types';
+import { Ayah, Hadith, SurahMeta, AppLanguage } from '../types';
 import { TafseerModal } from './TafseerModal';
 import { incrementHadithReadCount, toggleAyahReadState } from '../utils/progressStorage';
 import { 
@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 
 interface SearchViewProps {
-  language: 'en' | 'ar';
+  language: AppLanguage;
   setActiveTab?: (tab: any) => void;
 }
 
